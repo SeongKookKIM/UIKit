@@ -32,7 +32,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Jounal" id="61u-Gn-P7j"/>
                     <connections>
-                        <outlet property="tableView" destination="WYz-ug-ISm" id="we5-Ah-s0p"/>
+                        <outlet property="tableView" destination="WYz-ug-ISm" id="Zp0-5e-5Cf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
