@@ -13,6 +13,8 @@ class JournalEntryDetailViewController: UITableViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var bodyTextView: UITextView!
     @IBOutlet var photoImageView: UIImageView!
+    
+    var selectedJournalEntry: JournalEntry?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,14 +83,22 @@ class JournalEntryDetailViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//        super.prepare(for: segue, sender: sender)
+//        guard segue.identifier == "entryDetail" else {
+//            return
+//        }
+//        
+//        guard let journalEntryDetailViewController = segue.destination as? JournalEntryDetailViewController,
+//              let selectedJournalEntryCell = sender as JournalListTableViewCell,
+//              let indexPath = tableView.indexPath(for)
+//    }
+   
 
 }
