@@ -8,7 +8,7 @@
 import UIKit
 
 class JournalEntry {
-    // Mark: - Properties
+    // MARK: - Properties
     
     let date: Date
     let rating: Int
@@ -18,7 +18,7 @@ class JournalEntry {
     let latitude: Double?
     let longitude: Double?
     
-    // Mark: - Initaliztion
+    // MARK: - Initaliztion
     init?(rating: Int, title: String, body: String, photo: UIImage? = nil, latitude: Double? = nil, longitude: Double? = nil) {
         
         if title.isEmpty || body.isEmpty || rating < 0 || rating > 5 {
@@ -35,7 +35,7 @@ class JournalEntry {
     }
 }
 
-// Mark: - Sample Data
+// MARK: - Sample Data
 struct SampleJournalEntryData {
     var journalEntries: [JournalEntry] = []
     

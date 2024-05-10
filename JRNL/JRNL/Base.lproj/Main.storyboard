@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" id="c4j-Wd-E5E">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" id="c4j-Wd-E5E" customClass="JournalListTableViewCell" customModule="JRNL" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c4j-Wd-E5E" id="XOe-Wp-mta">
@@ -60,6 +60,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="GXt-am-vbH" id="XoY-Rx-LGQ"/>
+                                            <outlet property="photoImageView" destination="Aya-xT-Oei" id="7xJ-3P-MhA"/>
+                                            <outlet property="titleLabel" destination="kBT-0v-rNX" id="ECb-5R-7g5"/>
                                             <segue destination="tIz-jg-wR4" kind="show" id="A15-qG-Nzq"/>
                                         </connections>
                                     </tableViewCell>
