@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddJournalEntryViewController: UIViewController {
+class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var bodyTextView: UITextView!
@@ -17,7 +17,10 @@ class AddJournalEntryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        titleTextField.delegate = self
+        bodyTextView.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
@@ -36,6 +39,19 @@ class AddJournalEntryViewController: UIViewController {
         newJournalEntry = JournalEntry(rating: rating, title: title, body: body, photo: photo)
         
     }
+    
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(_ textFiled: UITextField) -> Bool {
+        textFiled.resignFirstResponder()
+        return true
+    }
 
+    //MARK: - UITextViewDelegate
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
 
 }
