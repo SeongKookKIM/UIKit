@@ -22,7 +22,7 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         
         titleTextField.delegate = self
         bodyTextView.delegate = self
-        updateSaveButtons()
+        updateSaveButtonState()
         
         // Do any additional setup after loading the view.
     }
@@ -50,7 +50,7 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        updateSaveButtonState()
     }
 
     //MARK: - UITextViewDelegate
@@ -62,11 +62,11 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        updateSaveButtons()
+        updateSaveButtonState()
     }
 
     // MARK: = Methods
-    private func updateSaveButtons() {
+    private func updateSaveButtonState() {
         let textFieldText = titleTextField.text ?? ""
         let textViewText = bodyTextView.text ?? ""
         
