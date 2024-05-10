@@ -13,6 +13,8 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     @IBOutlet var bodyTextView: UITextView!
     @IBOutlet var photoImageView: UIImageView!
     
+    @IBOutlet var saveButton: UIBarButtonItem!
+    
     var newJournalEntry: JournalEntry?
 
     override func viewDidLoad() {
@@ -20,6 +22,7 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         
         titleTextField.delegate = self
         bodyTextView.delegate = self
+        updateSaveButtons()
         
         // Do any additional setup after loading the view.
     }
@@ -45,6 +48,10 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         textFiled.resignFirstResponder()
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
 
     //MARK: - UITextViewDelegate
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -53,5 +60,17 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         }
         return true
     }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        updateSaveButtons()
+    }
 
+    // MARK: = Methods
+    private func updateSaveButtons() {
+        let textFieldText = titleTextField.text ?? ""
+        let textViewText = bodyTextView.text ?? ""
+        
+        saveButton.isEnabled = !textFieldText.isEmpty && !textViewText.isEmpty
+        
+    }
 }
