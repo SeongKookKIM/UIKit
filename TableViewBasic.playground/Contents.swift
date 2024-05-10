@@ -10,6 +10,22 @@ class TableViewExampleController: UIViewController, UITableViewDataSource, UITab
         ["cloud.sun", "11 APr 2023", "It's cloudy out"]
     ]
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.bounds = CGRect(x: 0, y: 0, width: 375, height: 667)
+        createTableView()
+    }
+    
+    func createTableView() {
+        self.tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self
+        self.tableView?.backgroundColor = UIColor.white
+        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.view.addSubview(self.tableView!)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         journalEntries.count
     }
@@ -39,3 +55,5 @@ class TableViewExampleController: UIViewController, UITableViewDataSource, UITab
         print(selectedJournalEntry)
     }
 }
+
+PlaygroundPage.current.liveView = TableViewExampleController()
