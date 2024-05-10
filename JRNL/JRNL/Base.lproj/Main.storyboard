@@ -174,8 +174,17 @@
                                 <segue destination="Pr1-Xm-FTL" kind="unwind" unwindAction="unwindNewEntryCancleWithSegue:" id="Ekb-eF-hl5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="MEY-xj-quN"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="MEY-xj-quN">
+                            <connections>
+                                <segue destination="Pr1-Xm-FTL" kind="unwind" unwindAction="unwindNewEntrySaveWithSegue:" id="ewi-Xt-dkY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="4ly-Tb-TZv" id="COO-5L-2m0"/>
+                        <outlet property="photoImageView" destination="qmK-Mr-4zK" id="ql8-MM-3jD"/>
+                        <outlet property="titleTextField" destination="3UV-Sf-U3B" id="v45-cC-Z19"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ov5-Lc-cSa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Pr1-Xm-FTL" userLabel="Exit" sceneMemberID="exit"/>
