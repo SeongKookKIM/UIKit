@@ -85,8 +85,10 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     public func saveJournalEntry(_ journalEntry: JournalEntry) {
-          print("TEST \(journalEntry.entryTitle)")
-      }
+        print("TEST \(journalEntry.entryTitle)")
+        sampleJournalEntryData.journalEntries.append(journalEntry)
+        tableView.reloadData()
+    }
     
 }
 
