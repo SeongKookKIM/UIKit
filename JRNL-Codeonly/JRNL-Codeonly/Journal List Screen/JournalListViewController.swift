@@ -9,18 +9,21 @@ import UIKit
 
 class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-
     
-        
+    
+    
     // tableView 초기화
     lazy var tableView: UITableView = {
-       let tableView = UITableView()
+        let tableView = UITableView()
         return tableView
     }()
     
-
+    var sampleJournalEntryData = SampleJournalEntryData()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        sampleJournalEntryData.createSampleJournalEntryData()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,21 +42,24 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
             tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor)
         ])
-
+        
         // 오른쪽 상단 아이템
         navigationItem.title = "Journal"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-                barButtonSystemItem: .add, target: self, action: #selector(addJournal)
-            )
+            barButtonSystemItem: .add, target: self, action: #selector(addJournal)
+        )
     }
     
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        sampleJournalEntryData.journalEntries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as! JournalListTableViewCell
+        let journalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
+        cell.configureCell(journalEntry: journalEntry)
+        return cell
     }
     
     // MARK: - UITableViewDelegate
@@ -75,6 +81,6 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         // popover
         present(navigationController, animated: true)
     }
-
+    
 }
 
