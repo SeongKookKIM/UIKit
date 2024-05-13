@@ -18,12 +18,14 @@ class JournalListTableViewCell: UITableViewCell {
     
     private lazy var dateLabel: UILabel = {
        let dateLabel = UILabel()
+        dateLabel.text = "Date"
         dateLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         return dateLabel
     }()
     
     private lazy var titleLabel: UILabel = {
        let titleLabel = UILabel()
+        titleLabel.text = "Title"
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         return titleLabel
     }()
@@ -44,8 +46,17 @@ class JournalListTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             thumbnailView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            thumbnailView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             thumbnailView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            thumbnailView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            thumbnailView.widthAnchor.constraint(equalToConstant: 90),
+            
+            dateLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor),
+            dateLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor),
+            dateLabel.leadingAnchor.constraint(equalTo: thumbnailView.trailingAnchor, constant: 8),
+            
+            titleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: thumbnailView.trailingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor)
         ])
     }
     
