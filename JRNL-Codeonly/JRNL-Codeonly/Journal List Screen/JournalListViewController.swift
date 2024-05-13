@@ -7,7 +7,7 @@
 
 import UIKit
 
-class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddJournalControllerDelegate {
     
     
     
@@ -78,9 +78,15 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         let addJournalViewController = AddJournalViewController()
         let navigationController = UINavigationController(rootViewController: addJournalViewController)
         
+        addJournalViewController.delegate = self
+        
         // popover
         present(navigationController, animated: true)
     }
+    
+    public func saveJournalEntry(_ journalEntry: JournalEntry) {
+          print("TEST \(journalEntry.entryTitle)")
+      }
     
 }
 

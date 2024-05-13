@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol AddJournalControllerDelegate: NSObject {
+    func saveJournalEntry(_ journalEntry: JournalEntry)
+}
+
 class AddJournalViewController: UIViewController {
+    
+    weak var delegate: AddJournalControllerDelegate?
+    //    weak var journalListViewController: JournalListViewController?
     
     private lazy var mainContainer: UIStackView = {
         let stackView = UIStackView()
@@ -43,7 +50,7 @@ class AddJournalViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var titleTextFiled: UITextField = {
+    private lazy var             titleTextField: UITextField = {
         let textFiled = UITextField()
         textFiled.placeholder = "Journal Title"
         
@@ -77,7 +84,7 @@ class AddJournalViewController: UIViewController {
         
         mainContainer.addArrangedSubview(ratingView)
         mainContainer.addArrangedSubview(toggleView)
-        mainContainer.addArrangedSubview(titleTextFiled)
+        mainContainer.addArrangedSubview(            titleTextField)
         mainContainer.addArrangedSubview(bodyTextView)
         mainContainer.addArrangedSubview(imageView)
         
@@ -89,10 +96,10 @@ class AddJournalViewController: UIViewController {
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
         ratingView.translatesAutoresizingMaskIntoConstraints = false
         toggleView.translatesAutoresizingMaskIntoConstraints = false
-        titleTextFiled.translatesAutoresizingMaskIntoConstraints = false
+                    titleTextField.translatesAutoresizingMaskIntoConstraints = false
         bodyTextView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+            
         NSLayoutConstraint.activate([
             mainContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 20),
             mainContainer.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
@@ -101,8 +108,8 @@ class AddJournalViewController: UIViewController {
             ratingView.widthAnchor.constraint(equalToConstant: 252),
             ratingView.heightAnchor.constraint(equalToConstant: 44),
             
-            titleTextFiled.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 8),
-            titleTextFiled.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -8),
+                        titleTextField.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 8),
+                        titleTextField.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -8),
             
             bodyTextView.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 8),
             bodyTextView.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -8),
@@ -116,7 +123,13 @@ class AddJournalViewController: UIViewController {
     }
     
     @objc func save() {
-        // Todo:
+        guard let title =             titleTextField.text, !title.isEmpty,
+              let body = bodyTextView.text, !body.isEmpty else {
+            return
+        }
+        let journalEntry = JournalEntry(rating: 3, title: title, body: body)!
+        delegate?.saveJournalEntry(journalEntry)
+        dismiss(animated: true)
     }
     
     @objc func cancle() {
