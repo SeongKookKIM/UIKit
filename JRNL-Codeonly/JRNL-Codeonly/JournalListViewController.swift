@@ -20,7 +20,7 @@ class JournalListViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        tableView.backgroundColor = .white
+        view.backgroundColor = .white
         
         let global = view.safeAreaLayoutGuide
         
@@ -34,8 +34,20 @@ class JournalListViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: global.leadingAnchor)
         ])
 
+        // 오른쪽 상단 아이템
+        navigationItem.title = "Journal"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .add, target: self, action: #selector(addJournal)
+            )
     }
-
+    
+    @objc private func addJournal() {
+        let addJournalViewController = AddJournalViewController()
+        let navigationController = UINavigationController(rootViewController: addJournalViewController)
+        
+        // popover
+        present(navigationController, animated: true)
+    }
 
 }
 
