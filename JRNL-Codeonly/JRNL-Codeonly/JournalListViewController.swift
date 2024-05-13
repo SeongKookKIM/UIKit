@@ -7,7 +7,10 @@
 
 import UIKit
 
-class JournalListViewController: UIViewController {
+class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+
+    
         
     // tableView 초기화
     lazy var tableView: UITableView = {
@@ -18,7 +21,10 @@ class JournalListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "journalCell")
         
         view.backgroundColor = .white
         
@@ -41,6 +47,17 @@ class JournalListViewController: UIViewController {
             )
     }
     
+    // MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath)
+    }
+    
+    
+    // MARK: - Methods
     @objc private func addJournal() {
         let addJournalViewController = AddJournalViewController()
         let navigationController = UINavigationController(rootViewController: addJournalViewController)
