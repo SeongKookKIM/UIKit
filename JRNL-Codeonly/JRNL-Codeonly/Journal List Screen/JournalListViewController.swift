@@ -24,20 +24,20 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "journalCell")
+        tableView.register(JournalListTableViewCell.self, forCellReuseIdentifier: "journalCell")
         
         view.backgroundColor = .white
         
-        let global = view.safeAreaLayoutGuide
+        let safeArea = view.safeAreaLayoutGuide
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: global.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: global.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: global.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: global.leadingAnchor)
+            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor)
         ])
 
         // 오른쪽 상단 아이템
@@ -60,6 +60,10 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let journalDetailViewController = JournalDetailViewController()
         show(journalDetailViewController, sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        90
     }
     
     
