@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		04E761882BF191D6002547F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E761872BF191D6002547F3 /* AppDelegate.swift */; };
 		04E7618A2BF191D6002547F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E761892BF191D6002547F3 /* SceneDelegate.swift */; };
-		04E7618C2BF191D6002547F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7618B2BF191D6002547F3 /* ViewController.swift */; };
+		04E7618C2BF191D6002547F3 /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7618B2BF191D6002547F3 /* JournalListViewController.swift */; };
 		04E761912BF191D8002547F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E761902BF191D8002547F3 /* Assets.xcassets */; };
 		04E761942BF191D8002547F3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04E761932BF191D8002547F3 /* Base */; };
+		04E7619C2BF19669002547F3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7619B2BF19669002547F3 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04E761842BF191D6002547F3 /* JRNL-Codeonly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JRNL-Codeonly.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E761872BF191D6002547F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E761892BF191D6002547F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04E7618B2BF191D6002547F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04E7618B2BF191D6002547F3 /* JournalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListViewController.swift; sourceTree = "<group>"; };
 		04E761902BF191D8002547F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E761932BF191D8002547F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04E761952BF191D8002547F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E7619B2BF19669002547F3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,8 @@
 			children = (
 				04E761872BF191D6002547F3 /* AppDelegate.swift */,
 				04E761892BF191D6002547F3 /* SceneDelegate.swift */,
-				04E7618B2BF191D6002547F3 /* ViewController.swift */,
+				04E7618B2BF191D6002547F3 /* JournalListViewController.swift */,
+				04E7619B2BF19669002547F3 /* MapViewController.swift */,
 				04E761902BF191D8002547F3 /* Assets.xcassets */,
 				04E761922BF191D8002547F3 /* LaunchScreen.storyboard */,
 				04E761952BF191D8002547F3 /* Info.plist */,
@@ -134,9 +137,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E7618C2BF191D6002547F3 /* ViewController.swift in Sources */,
+				04E7618C2BF191D6002547F3 /* JournalListViewController.swift in Sources */,
 				04E761882BF191D6002547F3 /* AppDelegate.swift in Sources */,
 				04E7618A2BF191D6002547F3 /* SceneDelegate.swift in Sources */,
+				04E7619C2BF19669002547F3 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
