@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var bodyTextView: UITextView!
@@ -15,7 +16,14 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
+    //위치 추가
+    @IBOutlet var getLocationSwitch: UISwitch!
+    @IBOutlet var getLocationSwitchLabel: UILabel!
+    
     var newJournalEntry: JournalEntry?
+    // 위치
+    let locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +32,8 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         bodyTextView.delegate = self
         updateSaveButtonState()
         
-        // Do any additional setup after loading the view.
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
     }
     
 
