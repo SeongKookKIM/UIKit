@@ -44,6 +44,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
         print("Failed to find user's location: \(error.localizedDescription)")
     }
     
+    // MARK: - MKMapViewDelegate
+    func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
+        let identifier = "mapAnnotation"
+        if annotation is JournalEntry {
+            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+                annotationView.annotation = annotation
+                return annotationView
+            } else {
+                let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView.canShowCallout = true
+                let callOutButton = UIButton(type: .detailDisclosure)
+                annotationView.rightCalloutAccessoryView = callOutButton
+                return annotationView
+            }
+        }
+        return nil
+    }
+    
     // MARK: - Methods
     func setInitialRegion(lat: CLLocationDegrees, long: CLLocationDegrees) -> MKCoordinateRegion {
         MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long),
