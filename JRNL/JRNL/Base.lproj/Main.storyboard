@@ -119,8 +119,11 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="koL-48-DRE">
                                         <rect key="frame" x="118.5" y="52" width="98.5" height="31"/>
                                         <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HGR-OU-dvW">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HGR-OU-dvW">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="getLocationSwitchValueChanged:" destination="iuJ-Ey-8X3" eventType="valueChanged" id="mMC-sd-wYz"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3J7-lJ-Zbs">
                                                 <rect key="frame" x="57" y="0.0" width="41.5" height="31"/>
@@ -181,6 +184,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="4ly-Tb-TZv" id="COO-5L-2m0"/>
+                        <outlet property="getLocationSwitch" destination="HGR-OU-dvW" id="Fp2-JX-JEX"/>
+                        <outlet property="getLocationSwitchLabel" destination="3J7-lJ-Zbs" id="PlV-Fq-ejc"/>
                         <outlet property="photoImageView" destination="qmK-Mr-4zK" id="ql8-MM-3jD"/>
                         <outlet property="saveButton" destination="MEY-xj-quN" id="m6I-Hk-Ftu"/>
                         <outlet property="titleTextField" destination="3UV-Sf-U3B" id="v45-cC-Z19"/>
