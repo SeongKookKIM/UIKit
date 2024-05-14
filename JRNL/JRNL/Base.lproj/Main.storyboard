@@ -199,7 +199,7 @@
         <!--Map-->
         <scene sceneID="d50-sB-NOz">
             <objects>
-                <viewController id="PSb-9G-yy4" sceneMemberID="viewController">
+                <viewController id="PSb-9G-yy4" customClass="MapViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bBb-KM-d9l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

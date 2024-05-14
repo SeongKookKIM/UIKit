@@ -13,6 +13,7 @@
 		0408DCFE2BE9F86100514FF1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0408DCFD2BE9F86100514FF1 /* Base */; };
 		0408DD002BE9F86300514FF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0408DCFF2BE9F86300514FF1 /* Assets.xcassets */; };
 		0408DD032BE9F86300514FF1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0408DD022BE9F86300514FF1 /* Base */; };
+		043372692BF3283B00EE0F3E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043372682BF3283B00EE0F3E /* MapViewController.swift */; };
 		047002CD2BEDB8CE00BD7239 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047002CC2BEDB8CE00BD7239 /* JournalEntry.swift */; };
 		047002CF2BEDC0DA00BD7239 /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047002CE2BEDC0DA00BD7239 /* JournalListTableViewCell.swift */; };
 		047002D22BEDDD3A00BD7239 /* AddJournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047002D12BEDDD3A00BD7239 /* AddJournalEntryViewController.swift */; };
@@ -28,6 +29,7 @@
 		0408DCFF2BE9F86300514FF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0408DD022BE9F86300514FF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0408DD042BE9F86300514FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		043372682BF3283B00EE0F3E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		047002CC2BEDB8CE00BD7239 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		047002CE2BEDC0DA00BD7239 /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
 		047002D12BEDDD3A00BD7239 /* AddJournalEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				0408DCF62BE9F86100514FF1 /* AppDelegate.swift */,
 				0408DCF82BE9F86100514FF1 /* SceneDelegate.swift */,
+				043372672BF3280900EE0F3E /* MapScreen */,
 				047002D32BEE018600BD7239 /* EntryDetailScene */,
 				047002D02BEDDCCA00BD7239 /* AddNewEntryScreen */,
 				047002C92BEDB7AD00BD7239 /* JournalListScreen */,
@@ -75,6 +78,14 @@
 				0408DD042BE9F86300514FF1 /* Info.plist */,
 			);
 			path = JRNL;
+			sourceTree = "<group>";
+		};
+		043372672BF3280900EE0F3E /* MapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				043372682BF3283B00EE0F3E /* MapViewController.swift */,
+			);
+			path = MapScreen;
 			sourceTree = "<group>";
 		};
 		047002C92BEDB7AD00BD7239 /* JournalListScreen */ = {
@@ -197,6 +208,7 @@
 				0408DCF92BE9F86100514FF1 /* SceneDelegate.swift in Sources */,
 				047002D52BEE01E200BD7239 /* JournalEntryDetailViewController.swift in Sources */,
 				047002D22BEDDD3A00BD7239 /* AddJournalEntryViewController.swift in Sources */,
+				043372692BF3283B00EE0F3E /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
