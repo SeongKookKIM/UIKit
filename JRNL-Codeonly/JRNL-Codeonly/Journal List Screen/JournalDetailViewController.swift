@@ -101,14 +101,62 @@ class JournalDetailViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         switch indexPath.row {
-        case 1:
+        case 0:
             cell.contentView.addSubview(dateLabel)
-
+            dateLabel.text = journalEntry.date.formatted(.dateTime.year().month().day())
+            
+            let marginGuide = cell.contentView.layoutMarginsGuide
             NSLayoutConstraint.activate([
-                dateLabel.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-                dateLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 16),
-                dateLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -16)
+                dateLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+                dateLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor),
+                dateLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor)
             ])
+            
+        case 2:
+            cell.contentView.addSubview(titleLabel)
+            titleLabel.text = journalEntry.entryTitle
+            
+            let marginGuide = cell.contentView.layoutMarginsGuide
+            NSLayoutConstraint.activate([
+                titleLabel.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+                titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor),
+                titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor)
+            ])
+            
+        case 3:
+            cell.contentView.addSubview(bodyTextView)
+            bodyTextView.text = journalEntry.entryBody
+            
+            let marginGuide = cell.contentView.layoutMarginsGuide
+            NSLayoutConstraint.activate([
+                bodyTextView.topAnchor.constraint(equalTo: marginGuide.topAnchor ),
+                bodyTextView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor),
+                bodyTextView.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor),
+                bodyTextView.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor)
+            ])
+            
+        case 4:
+            cell.contentView.addSubview(imageView)
+            imageView.image = journalEntry.photo
+            
+            NSLayoutConstraint.activate([
+                imageView.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+                imageView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+                imageView.widthAnchor.constraint(equalToConstant: 300),
+                imageView.heightAnchor.constraint(equalToConstant: 300)
+            ])
+            
+        case 5:
+            cell.contentView.addSubview(mapView)
+            mapView.image = UIImage(systemName: "map")
+            
+            NSLayoutConstraint.activate([
+                mapView.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+                mapView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+                mapView.widthAnchor.constraint(equalToConstant: 300),
+                mapView.heightAnchor.constraint(equalToConstant: 300)
+            ])
+            
         default:
             print("others")
         }

@@ -63,11 +63,12 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let journalEntries = sampleJournalEntryData.journalEntries[indexPath.row]
         
         let journalDetailViewController = JournalDetailViewController(journalEntry: journalEntries)
         show(journalDetailViewController, sender: self)
+        print("Click")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
