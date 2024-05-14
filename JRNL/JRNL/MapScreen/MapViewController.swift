@@ -14,10 +14,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet var mapView: MKMapView!
     let locationManager = CLLocationManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         self.navigationItem.title = "Loading..."
@@ -34,11 +34,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
+    }
+    
     // MARK: - Methods
     func setInitialRegion(lat: CLLocationDegrees, long: CLLocationDegrees) -> MKCoordinateRegion {
         MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long),
                            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     }
-
-
+    
+    
 }
