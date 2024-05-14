@@ -16,6 +16,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
     let locationManager = CLLocationManager()
     
     var sampleJournalEntryData = SampleJournalEntryData()
+    var selectedJournalEntry: JournalEntry?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
             }
         }
         return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, 
+                 calloutAccessoryControlTapped control: UIControl) {
+        guard let annotation = mapView.selectedAnnotations.first else {
+            return
+        }
+        selectedJournalEntry = annotation as? JournalEntry
+        self.performSegue(withIdentifier: "showMapDetail", sender: self)
+    }
+    
+    // MARK: - navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard segue.identifier == "showMapDetail" else {
+            fatalError("Unexpected segue identifier")
+        }
+        guard let entryDetailViewController = segue.destination as? JournalEntryDetailViewController else {
+            fatalError("Unexpected view controller")
+        }
+        entryDetailViewController.selectedJournalEntry = selectedJournalEntry
     }
     
     // MARK: - Methods

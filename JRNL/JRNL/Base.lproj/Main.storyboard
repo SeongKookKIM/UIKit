@@ -221,6 +221,7 @@
                     <navigationItem key="navigationItem" title="Map" id="Q7j-GB-Yjz"/>
                     <connections>
                         <outlet property="mapView" destination="YLk-EA-MEj" id="qiC-hu-WLo"/>
+                        <segue destination="tIz-jg-wR4" kind="show" identifier="showMapDetail" id="Zbt-m7-aoc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVv-wz-LcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -471,6 +472,9 @@
             <point key="canvasLocation" x="2782" y="-28"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Zbt-m7-aoc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="face.smiling" catalog="system" width="128" height="123"/>
         <image name="map" catalog="system" width="128" height="112"/>
