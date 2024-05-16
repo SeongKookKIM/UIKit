@@ -18,6 +18,7 @@
 		047002CF2BEDC0DA00BD7239 /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047002CE2BEDC0DA00BD7239 /* JournalListTableViewCell.swift */; };
 		047002D22BEDDD3A00BD7239 /* AddJournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047002D12BEDDD3A00BD7239 /* AddJournalEntryViewController.swift */; };
 		047002D52BEE01E200BD7239 /* JournalEntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047002D42BEE01E200BD7239 /* JournalEntryDetailViewController.swift */; };
+		04EECB882BF587D400048A19 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EECB872BF587D400048A19 /* SharedData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		047002CE2BEDC0DA00BD7239 /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
 		047002D12BEDDD3A00BD7239 /* AddJournalEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryViewController.swift; sourceTree = "<group>"; };
 		047002D42BEE01E200BD7239 /* JournalEntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryDetailViewController.swift; sourceTree = "<group>"; };
+		04EECB872BF587D400048A19 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				047002CC2BEDB8CE00BD7239 /* JournalEntry.swift */,
+				04EECB872BF587D400048A19 /* SharedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EECB882BF587D400048A19 /* SharedData.swift in Sources */,
 				0408DCFB2BE9F86100514FF1 /* JournalListViewController.swift in Sources */,
 				0408DCF72BE9F86100514FF1 /* AppDelegate.swift in Sources */,
 				047002CD2BEDB8CE00BD7239 /* JournalEntry.swift in Sources */,
