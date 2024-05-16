@@ -3,7 +3,7 @@
 
 import UIKit
 
-
+// 싱글톤 패턴 
 class SharedData {
     static let shared = SharedData()
     private var journalEntries: [JournalEntry]

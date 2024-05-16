@@ -24,12 +24,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        self.navigationItem.title = "Loading..."
-        locationManager.requestLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         
+        self.navigationItem.title = "Loading..."
         mapView.delegate = self
-        sampleJournalEntryData.createSampleJournalEntryData()
-        mapView.addAnnotations(sampleJournalEntryData.journalEntries)
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        locationManager.requestLocation()
     }
     
     // MARK: - CLLocationManagerDelegate
@@ -39,6 +42,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
             let long = myLocation.coordinate.longitude
             self.navigationItem.title = "Map"
             mapView.region = setInitialRegion(lat: lat, long: long)
+            mapView.addAnnotations(SharedData.shared.getAllJournalEntries())
         }
     }
     
