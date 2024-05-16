@@ -91,6 +91,20 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }
+    
+    // MARK: - UIImagePirckerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let seletedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was privided the following: \(info)")
+        }
+        let smallerImage = seletedImage.preparingThumbnail(of: CGSize(width: 300, height: 300))
+        photoImageView.image = smallerImage
+        dismiss(animated: true)
+    }
 
     // MARK: = Methods
     private func updateSaveButtonState() {
@@ -121,5 +135,6 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true)
+        // *** https://developer.apple.com/documentation/photokit/selecting_photos_and_videos_in_ios PHPickerViewController 확인하기
     }
 }
