@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class CustomTableViewCell: UITableViewCell {
     var stackView: UIStackView!
@@ -39,6 +40,7 @@ class CustomTableViewCell: UITableViewCell {
 class JournalDetailViewController: UITableViewController {
     
     let journalEntry: JournalEntry
+    
     
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
@@ -108,6 +110,8 @@ class JournalDetailViewController: UITableViewController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "customCell")
         navigationItem.title = "Journal Detail"
         
+        getMapSnapshot()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -134,7 +138,7 @@ class JournalDetailViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.contentView.addSubview(dateLabel)
-            dateLabel.text = journalEntry.date.formatted(.dateTime.year().month().day())
+            dateLabel.text = journalEntry.dateString
             
             let marginGuide = cell.contentView.layoutMarginsGuide
             NSLayoutConstraint.activate([
@@ -214,6 +218,27 @@ class JournalDetailViewController: UITableViewController {
         case 4: return 316
         case 5: return 316
         default: return 44.5
+        }
+    }
+    
+    // MARK: - Methods
+    private func getMapSnapshot() {
+        if let lat = journalEntry.latitude,
+           let long = journalEntry.longitude {
+            let options = MKMapSnapshotter.Options()
+            options.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            options.size = CGSize(width: 300, height: 300)
+            options.preferredConfiguration = MKStandardMapConfiguration()
+            let snapShotter = MKMapSnapshotter(options: options)
+            snapShotter.start { snapShot, error in
+                if let snapshot = snapShot {
+                    self.mapView.image = snapshot.image
+                } else if let error = error {
+                    print("snapShot error: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            self.mapView.image = UIImage(systemName: "map")
         }
     }
     
