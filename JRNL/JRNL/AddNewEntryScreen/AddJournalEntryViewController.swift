@@ -7,9 +7,10 @@
 
 import UIKit
 import CoreLocation
+import PhotosUI
 
-class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate,
-                                     UINavigationControllerDelegate {
+class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, PHPickerViewControllerDelegate {
+    // UIImagePickerControllerDelegate, UINavigationControllerDelegate
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var bodyTextView: UITextView!
@@ -27,7 +28,7 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     // 위치
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,10 +40,10 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         locationManager.requestAlwaysAuthorization()
     }
     
-
-  
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -66,7 +67,7 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
     }
-
+    
     //MARK: - UITextViewDelegate
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
@@ -93,19 +94,41 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     }
     
     // MARK: - UIImagePirckerControllerDelegate
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
+    /*
+     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+     dismiss(animated: true)
+     }
+     
+     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+     guard let seletedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+     fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+     }
+     let smallerImage = seletedImage.preparingThumbnail(of: CGSize(width: 300, height: 300))
+     photoImageView.image = smallerImage
+     dismiss(animated: true)
+     }
+     */
+    // PHPickerViewControllerDelegate 수정
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        guard let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self) else {
+            return
+        }
+        
+        provider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+            guard let image = image as? UIImage, error == nil else {
+                return
+            }
+            
+            let smallerImage = image.preparingThumbnail(of: CGSize(width: 300, height: 300))
+            DispatchQueue.main.async {
+                self?.photoImageView.image = smallerImage
+            }
+        }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let seletedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was privided the following: \(info)")
-        }
-        let smallerImage = seletedImage.preparingThumbnail(of: CGSize(width: 300, height: 300))
-        photoImageView.image = smallerImage
-        dismiss(animated: true)
-    }
-
+    
     // MARK: = Methods
     private func updateSaveButtonState() {
         let textFieldText = titleTextField.text ?? ""
@@ -131,10 +154,17 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     
     
     @IBAction func getPhoto(_ sender: UITapGestureRecognizer) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-        present(imagePickerController, animated: true)
+        /*
+         let imagePickerController = UIImagePickerController()
+         imagePickerController.delegate = self
+         imagePickerController.sourceType = .photoLibrary
+         present(imagePickerController, animated: true)
+         */
         // *** https://developer.apple.com/documentation/photokit/selecting_photos_and_videos_in_ios PHPickerViewController 확인하기
+        var config = PHPickerConfiguration()
+        config.filter = .images
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+        present(picker, animated: true)
     }
 }
