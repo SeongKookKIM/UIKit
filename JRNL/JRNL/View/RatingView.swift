@@ -31,7 +31,7 @@ class RatingView: UIStackView {
         }
         ratingButtons.removeAll()
         let filledStat = UIImage(systemName: "star.fill")
-        let emtyStar = UIImage(systemName: "start")
+        let emtyStar = UIImage(systemName: "star")
         let highlightedStar = UIImage(systemName: "star.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal)
         
         for _ in 0..<buttonCount {
