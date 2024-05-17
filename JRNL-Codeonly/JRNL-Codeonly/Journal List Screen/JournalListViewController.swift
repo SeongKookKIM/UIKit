@@ -8,43 +8,37 @@
 import UIKit
 
 class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddJournalControllerDelegate {
-
-    // tableView 초기화
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(JournalListTableViewCell.self, forCellReuseIdentifier: "journalCell")
-        
+
         view.backgroundColor = .white
         
-        let safeArea = view.safeAreaLayoutGuide
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
+        let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor)
+            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
         
-        // 오른쪽 상단 아이템
         navigationItem.title = "Journal"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add, target: self, action: #selector(addJournal)
-        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(addJournal))
     }
     
-    // JSON 데이터 불러오기
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SharedData.shared.loadJournalEntriesData()
@@ -65,17 +59,14 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let journalEntry = SharedData.shared.getJournalEntry(index: indexPath.row)
-        
         let journalDetailViewController = JournalDetailViewController(journalEntry: journalEntry)
         show(journalDetailViewController, sender: self)
-        print("Click")
     }
     
-    // remove
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             SharedData.shared.removeJournalEntry(index: indexPath.row)
-            SharedData.shared.loadJournalEntriesData()
+            SharedData.shared.saveJournalEntriesData()
             tableView.reloadData()
         }
     }
@@ -83,24 +74,20 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         90
     }
-    
+
     
     // MARK: - Methods
     @objc private func addJournal() {
         let addJournalViewController = AddJournalViewController()
-        let navigationController = UINavigationController(rootViewController: addJournalViewController)
-        
+        let navController = UINavigationController(rootViewController: addJournalViewController)
         addJournalViewController.delegate = self
-        
-        // popover
-        present(navigationController, animated: true)
+        present(navController, animated: true)
     }
     
     public func saveJournalEntry(_ journalEntry: JournalEntry) {
-        print("TEST \(journalEntry.entryTitle)")
         SharedData.shared.addJournalEntry(newJournalEntry: journalEntry)
+        SharedData.shared.saveJournalEntriesData()
         tableView.reloadData()
     }
-    
-}
 
+}

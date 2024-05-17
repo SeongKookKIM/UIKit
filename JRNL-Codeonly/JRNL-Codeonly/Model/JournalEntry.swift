@@ -20,8 +20,7 @@ class JournalEntry: NSObject, MKAnnotation, Codable {
             return UIImage(data: data)
         }
         set {
-            photoData = newValue?.pngData()
-//            photoData = newValue?.jpegData(compressionQuality: 1.0)
+            photoData = newValue?.jpegData(compressionQuality: 1.0)
         }
     }
     let latitude: Double?
@@ -39,8 +38,7 @@ class JournalEntry: NSObject, MKAnnotation, Codable {
         self.rating = rating
         self.entryTitle = title
         self.entryBody = body
-//        self.photoData = photo?.jpegData(compressionQuality: 1.0)
-        self.photoData = photo?.pngData()
+        self.photoData = photo?.jpegData(compressionQuality: 1.0)
         self.latitude = latitude
         self.longitude = longitude
     }
@@ -102,7 +100,7 @@ struct SampleJournalEntryData {
         }
         guard let journalEntry2 = JournalEntry(rating: 0, title: "Bad",
                                                body: "Today is bad day", photo: photo2,
-        latitude: 37.3318, longitude: -122.0312) else {
+        latitude: 37.686573, longitude: 126.779094) else {
             fatalError("Unable to instantiate journalEntry2")
         }
         guard let journalEntry3 = JournalEntry(rating: 3, title: "Ok",
