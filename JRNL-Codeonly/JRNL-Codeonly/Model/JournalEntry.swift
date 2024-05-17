@@ -20,7 +20,8 @@ class JournalEntry: NSObject, MKAnnotation, Codable {
             return UIImage(data: data)
         }
         set {
-            photoData = newValue?.jpegData(compressionQuality: 1.0)
+            photoData = newValue?.pngData()
+//            photoData = newValue?.jpegData(compressionQuality: 1.0)
         }
     }
     let latitude: Double?
@@ -38,7 +39,8 @@ class JournalEntry: NSObject, MKAnnotation, Codable {
         self.rating = rating
         self.entryTitle = title
         self.entryBody = body
-        self.photoData = photo?.jpegData(compressionQuality: 1.0)
+//        self.photoData = photo?.jpegData(compressionQuality: 1.0)
+        self.photoData = photo?.pngData()
         self.latitude = latitude
         self.longitude = longitude
     }

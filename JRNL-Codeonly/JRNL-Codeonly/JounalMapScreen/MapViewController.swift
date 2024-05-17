@@ -51,6 +51,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         ])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SharedData.shared.loadJournalEntriesData()
+    }
+    
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         locationManager.requestLocation()
