@@ -11,6 +11,7 @@
 		048613272BF1A2A900C062A5 /* AddJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048613262BF1A2A900C062A5 /* AddJournalViewController.swift */; };
 		048613292BF1B3EE00C062A5 /* JournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048613282BF1B3EE00C062A5 /* JournalDetailViewController.swift */; };
 		0486132B2BF1B56000C062A5 /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486132A2BF1B56000C062A5 /* JournalListTableViewCell.swift */; };
+		048C83632BF7170A00009EB2 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C83622BF7170A00009EB2 /* SharedData.swift */; };
 		04E761882BF191D6002547F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E761872BF191D6002547F3 /* AppDelegate.swift */; };
 		04E7618A2BF191D6002547F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E761892BF191D6002547F3 /* SceneDelegate.swift */; };
 		04E7618C2BF191D6002547F3 /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7618B2BF191D6002547F3 /* JournalListViewController.swift */; };
@@ -24,6 +25,7 @@
 		048613262BF1A2A900C062A5 /* AddJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalViewController.swift; sourceTree = "<group>"; };
 		048613282BF1B3EE00C062A5 /* JournalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailViewController.swift; sourceTree = "<group>"; };
 		0486132A2BF1B56000C062A5 /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
+		048C83622BF7170A00009EB2 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		04E761842BF191D6002547F3 /* JRNL-Codeonly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JRNL-Codeonly.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E761872BF191D6002547F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E761892BF191D6002547F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				0465599C2BF1EB3A00CD6BC7 /* JournalEntry.swift */,
+				048C83622BF7170A00009EB2 /* SharedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048C83632BF7170A00009EB2 /* SharedData.swift in Sources */,
 				04E7618C2BF191D6002547F3 /* JournalListViewController.swift in Sources */,
 				048613292BF1B3EE00C062A5 /* JournalDetailViewController.swift in Sources */,
 				0486132B2BF1B56000C062A5 /* JournalListTableViewCell.swift in Sources */,

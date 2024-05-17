@@ -19,16 +19,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }()
     
     let locationManager = CLLocationManager()
-    
-    var selectedJournalEntry: JournalEntry?
-    
-    var sampleJournalEntryData = SampleJournalEntryData()
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 위치 정보 핀으로 가져오기
-        sampleJournalEntryData.createSampleJournalEntryData()
+
 //        mapView.addAnnotation(sampleJournalEntryData.journalEntries)
         
         view.backgroundColor = .white
@@ -36,9 +33,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        self.navigationItem.title = "Loding..."
-        locationManager.requestLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        
+        self.navigationItem.title = "Loding..."
         
         
         view.addSubview(mapView)
@@ -71,7 +68,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let long = myLocation.coordinate.longitude
             self.navigationItem.title = "Map"
             mapView.region = setInitialRegion(lat: lat, long: long)
-            mapView.addAnnotations(sampleJournalEntryData.journalEntries)
+            mapView.addAnnotations(SharedData.shared.getAllJournalEntries())
         }
     }
     
