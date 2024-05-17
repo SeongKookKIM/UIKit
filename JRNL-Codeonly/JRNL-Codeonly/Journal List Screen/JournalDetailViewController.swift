@@ -159,7 +159,7 @@ class JournalDetailViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.contentView.addSubview(dateLabel)
-            dateLabel.text = journalEntry.dateString
+            dateLabel.text = journalEntry.date.formatted(.dateTime.year().month().day())
             
             let marginGuide = cell.contentView.layoutMarginsGuide
             NSLayoutConstraint.activate([

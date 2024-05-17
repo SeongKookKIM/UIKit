@@ -40,12 +40,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         view.addSubview(mapView)
         
-     
 //        let _: CLAuthorizationStatus = locationManager.authorizationStatus
-        
-
-        
- 
         
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -110,9 +105,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     }
     
-    
 
-    
     // MARK: - Methods
     func setInitialRegion(lat: CLLocationDegrees, long: CLLocationDegrees) -> MKCoordinateRegion {
         MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long),
