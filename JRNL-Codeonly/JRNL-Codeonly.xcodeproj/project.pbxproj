@@ -13,6 +13,7 @@
 		0486132B2BF1B56000C062A5 /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486132A2BF1B56000C062A5 /* JournalListTableViewCell.swift */; };
 		048C83632BF7170A00009EB2 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C83622BF7170A00009EB2 /* SharedData.swift */; };
 		048C83652BF73A7300009EB2 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C83642BF73A7300009EB2 /* CustomTableViewCell.swift */; };
+		048C83682BF73D6800009EB2 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C83672BF73D6800009EB2 /* RatingView.swift */; };
 		04E761882BF191D6002547F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E761872BF191D6002547F3 /* AppDelegate.swift */; };
 		04E7618A2BF191D6002547F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E761892BF191D6002547F3 /* SceneDelegate.swift */; };
 		04E7618C2BF191D6002547F3 /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7618B2BF191D6002547F3 /* JournalListViewController.swift */; };
@@ -28,6 +29,7 @@
 		0486132A2BF1B56000C062A5 /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
 		048C83622BF7170A00009EB2 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		048C83642BF73A7300009EB2 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		048C83672BF73D6800009EB2 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		04E761842BF191D6002547F3 /* JRNL-Codeonly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JRNL-Codeonly.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E761872BF191D6002547F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E761892BF191D6002547F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,14 +51,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0486132C2BF1B58A00C062A5 /* Journal List Screen */ = {
+		048C83662BF73D0300009EB2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				04E7618B2BF191D6002547F3 /* JournalListViewController.swift */,
-				048613282BF1B3EE00C062A5 /* JournalDetailViewController.swift */,
 				0486132A2BF1B56000C062A5 /* JournalListTableViewCell.swift */,
+				048C83672BF73D6800009EB2 /* RatingView.swift */,
 			);
-			path = "Journal List Screen";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		04E7617B2BF191D6002547F3 = {
@@ -82,22 +83,16 @@
 				04E761892BF191D6002547F3 /* SceneDelegate.swift */,
 				048613262BF1A2A900C062A5 /* AddJournalViewController.swift */,
 				048C83642BF73A7300009EB2 /* CustomTableViewCell.swift */,
+				04E7618B2BF191D6002547F3 /* JournalListViewController.swift */,
+				048613282BF1B3EE00C062A5 /* JournalDetailViewController.swift */,
+				04E7619B2BF19669002547F3 /* MapViewController.swift */,
+				048C83662BF73D0300009EB2 /* Views */,
 				04EECB8C2BF6290700048A19 /* Model */,
-				04EECB8B2BF5ED7000048A19 /* JounalMapScreen */,
-				0486132C2BF1B58A00C062A5 /* Journal List Screen */,
 				04E761902BF191D8002547F3 /* Assets.xcassets */,
 				04E761922BF191D8002547F3 /* LaunchScreen.storyboard */,
 				04E761952BF191D8002547F3 /* Info.plist */,
 			);
 			path = "JRNL-Codeonly";
-			sourceTree = "<group>";
-		};
-		04EECB8B2BF5ED7000048A19 /* JounalMapScreen */ = {
-			isa = PBXGroup;
-			children = (
-				04E7619B2BF19669002547F3 /* MapViewController.swift */,
-			);
-			path = JounalMapScreen;
 			sourceTree = "<group>";
 		};
 		04EECB8C2BF6290700048A19 /* Model */ = {
@@ -179,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048C83682BF73D6800009EB2 /* RatingView.swift in Sources */,
 				048C83632BF7170A00009EB2 /* SharedData.swift in Sources */,
 				04E7618C2BF191D6002547F3 /* JournalListViewController.swift in Sources */,
 				048613292BF1B3EE00C062A5 /* JournalDetailViewController.swift in Sources */,
