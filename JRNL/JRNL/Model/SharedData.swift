@@ -52,6 +52,7 @@ class SharedData {
     
     func saveJournalEntriesData() {
         let pathDirectory = getDocumentDirectory()
+        print(pathDirectory)
         try? FileManager.default.createDirectory(at: pathDirectory, withIntermediateDirectories: true)
         let filePath = pathDirectory.appendingPathComponent("journalEntries.json")
         let json = try? JSONEncoder().encode(journalEntries)
