@@ -86,6 +86,27 @@ class JournalDetailViewController: UITableViewController {
         imageView.image = UIImage(systemName: "map.smiling")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+    
+        
+        guard let latitude = journalEntry.latitude,
+              let longitude = journalEntry.longitude else {
+            return imageView
+        }
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
+        let options = MKMapSnapshotter.Options()
+        options.region = region
+        options.size = CGSize(width: 300, height: 300)
+
+        let shotter = MKMapSnapshotter(options: options)
+        shotter.start { result, error in
+            guard let snapshot = result else {
+                print("Snapshot error: \(error?.localizedDescription ?? "")")
+                return
+            }
+            imageView.image = snapshot.image
+        }
         
         return imageView
     }()
@@ -110,7 +131,7 @@ class JournalDetailViewController: UITableViewController {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "customCell")
         navigationItem.title = "Journal Detail"
         
-        getMapSnapshot()
+        //        getMapSnapshot()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -223,68 +244,24 @@ class JournalDetailViewController: UITableViewController {
     
     // MARK: - Methods
     private func getMapSnapshot() {
-        if let lat = journalEntry.latitude,
-           let long = journalEntry.longitude {
-            let options = MKMapSnapshotter.Options()
-            options.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            options.size = CGSize(width: 300, height: 300)
-            options.preferredConfiguration = MKStandardMapConfiguration()
-            let snapShotter = MKMapSnapshotter(options: options)
-            snapShotter.start { snapShot, error in
-                if let snapshot = snapShot {
-                    self.mapView.image = snapshot.image
-                } else if let error = error {
-                    print("snapShot error: \(error.localizedDescription)")
-                }
-            }
-        } else {
-            self.mapView.image = UIImage(systemName: "map")
-        }
+        //        if let lat = journalEntry.latitude,
+        //           let long = journalEntry.longitude {
+        //            let options = MKMapSnapshotter.Options()
+        //            options.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: long), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        //            options.size = CGSize(width: 300, height: 300)
+        //            options.preferredConfiguration = MKStandardMapConfiguration()
+        //            let snapShotter = MKMapSnapshotter(options: options)
+        //            snapShotter.start { snapShot, error in
+        //                if let snapshot = snapShot {
+        //                    self.mapView.image = snapshot.image
+        //                } else if let error = error {
+        //                    print("snapShot error: \(error.localizedDescription)")
+        //                }
+        //            }
+        //        } else {
+        //            self.mapView.image = UIImage(systemName: "map")
+        //        }
+        //    }
+
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
