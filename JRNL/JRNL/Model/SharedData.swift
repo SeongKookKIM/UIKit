@@ -28,6 +28,12 @@ class SharedData {
     func addJournalEntry(newJournalEntry: JournalEntry) {
         journalEntries.append(newJournalEntry)
     }
+    
+    func removeSeletedJournalEntry(_ selectedJournalEntry: JournalEntry) {
+        journalEntries.removeAll {
+            $0.key == selectedJournalEntry.key
+        }
+    }
 
     func removeJournalEntry(index: Int) {
         journalEntries.remove(at: index)

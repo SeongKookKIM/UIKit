@@ -63,7 +63,15 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            SharedData.shared.removeJournalEntry(index: indexPath.row)
+            
+            if self.search.isActive {
+                let seletedJournalEntry = filteredTableData[indexPath.row]
+                filteredTableData.remove(at: indexPath.row)
+                SharedData.shared.removeSeletedJournalEntry(seletedJournalEntry)
+            } else {
+                SharedData.shared.removeJournalEntry(index: indexPath.row)
+            }
+
             SharedData.shared.saveJournalEntriesData()
             tableView.reloadData()
         }
