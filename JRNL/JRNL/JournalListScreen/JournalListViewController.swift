@@ -8,13 +8,13 @@
 import UIKit
 
 class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
-
+    
     
     
     // MARK: - Properties
     
     @IBOutlet var tableView: UITableView!
-        
+    
     // 검색
     let search = UISearchController(searchResultsController: nil)
     var filteredTableData: [JournalEntry] = []
@@ -33,18 +33,28 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // 실제 데이터는 엄청 많지만 테이블에게는 몇번쨰 인지 알려줘야함
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        SharedData.shared.numberOfJournalEntries()
+        if search.isActive {
+            return self.filteredTableData.count
+        } else {
+            return SharedData.shared.numberOfJournalEntries()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let journalCell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as! JournalListTableViewCell
-        let journalEntry = SharedData.shared.getJournalEntry(index: indexPath.row)
-        
+        let journalEntry: JournalEntry
+        if self.search.isActive {
+            journalEntry = filteredTableData[indexPath.row]
+        } else {
+            journalEntry = SharedData.shared.getJournalEntry(index: indexPath.row)
+        }
+
         // 디코딩
         if let photoData = journalEntry.photoData {
             journalCell.photoImageView.image = UIImage(data: photoData)
         }
-            
+        
         journalCell.dateLabel.text = journalEntry.dateString
         journalCell.titleLabel.text = journalEntry.entryTitle
         return journalCell
@@ -64,7 +74,13 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         guard let searchBarText = searchController.searchBar.text else {
             return
         }
-        print(searchBarText)
+        filteredTableData.removeAll()
+        for journalEntry in SharedData.shared.getAllJournalEntries() {
+            if journalEntry.entryTitle.lowercased().contains(searchBarText.lowercased()) {
+                filteredTableData.append(journalEntry)
+            }
+        }
+        self.tableView.reloadData()
     }
     
     // MARK: - Methods
@@ -84,7 +100,7 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
