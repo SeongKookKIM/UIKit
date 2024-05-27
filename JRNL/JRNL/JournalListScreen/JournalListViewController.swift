@@ -7,15 +7,26 @@
 
 import UIKit
 
-class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
+
+    
     
     // MARK: - Properties
     
     @IBOutlet var tableView: UITableView!
+        
+    // 검색
+    let search = UISearchController(searchResultsController: nil)
+    var filteredTableData: [JournalEntry] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SharedData.shared.loadJournalEntriesData()
+        
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search titles"
+        navigationItem.searchController = search
     }
     
     // MARK: - UITableViewDataSource
@@ -48,9 +59,15 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    // MARK: - UISearchResultUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchBarText = searchController.searchBar.text else {
+            return
+        }
+        print(searchBarText)
+    }
     
     // MARK: - Methods
-    
     // cancle action
     @IBAction func unwindNewEntryCancle(segue: UIStoryboardSegue) {
         
