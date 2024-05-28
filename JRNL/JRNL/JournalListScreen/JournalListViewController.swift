@@ -74,10 +74,12 @@ class JournalListViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     // MARK: - UICollectionViewDelegate
-    private func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
             let delete = UIAction(title: "Delete") { [weak self] (action) in
-                if let search = self?.search, search.isActive, let selectedJournalEntry = self?.filteredTableData[indexPath.item] {
+                if let search = self?.search, search.isActive,
+                   let selectedJournalEntry = self?.filteredTableData[indexPath.item] {
                     self?.filteredTableData.remove(at: indexPath.item)
                     SharedData.shared.removeSeletedJournalEntry(selectedJournalEntry)
                 } else {
