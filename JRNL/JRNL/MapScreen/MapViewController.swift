@@ -15,7 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
     @IBOutlet var mapView: MKMapView!
     let locationManager = CLLocationManager()
     
-    var sampleJournalEntryData = SampleJournalEntryData()
+    // var sampleJournalEntryData = SampleJournalEntryData()
     var selectedJournalEntry: JournalEntry?
     
     
@@ -42,7 +42,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
             let long = myLocation.coordinate.longitude
             self.navigationItem.title = "Map"
             mapView.region = setInitialRegion(lat: lat, long: long)
-            mapView.addAnnotations(SharedData.shared.getAllJournalEntries())
+            // mapView.addAnnotations(SharedData.shared.getAllJournalEntries())
         }
     }
     
